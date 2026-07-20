@@ -2,7 +2,7 @@
 defineProps({
   title: { type: String, required: true },
   description: { type: String, required: true },
-  tages: { type: Array, required: true },
+  tags: { type: Array, required: true },
   image: { type: String, default: "" },
 });
 
@@ -11,7 +11,7 @@ const emit = defineEmits(["open"]);
 
 <template>
   <article
-    class="group flex h-64 w-56 shrink-0 cursor-pointer flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md transition-all duration-300 hover:border-amber-300/50 hover:bg-white/10"
+    class="group flex h-71 w-56 shrink-0 cursor-pointer flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md transition-all duration-300 hover:border-amber-300/50 hover:bg-white/10"
     @click="emit('open')"
   >
     <div

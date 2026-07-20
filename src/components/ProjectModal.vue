@@ -47,7 +47,7 @@ onUnmounted(() => window.removeEventListener("keydown", handleKeydown));
 
           <h2 class="text-2xl font-medium text-white">{{ project.title }}</h2>
           <p class="mt-2 text-sm leading-relaxed text-white/70">
-            {{ project.description }}
+            {{ project.longDescription }}
           </p>
 
           <div class="mt-4 flex flex-wrap gap-2">
