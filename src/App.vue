@@ -9,7 +9,7 @@ import ContactPanel from "./components/ContactPanel.vue";
 import ProjectModal from "./components/ProjectModal.vue";
 import ScrollDots from "./components/ScrollDots.vue";
 import ELFLIX from "./assets/images/ELFLIX.png";
-import GATHERLY from "./assets/images/GATHERLY1.png";
+import GATHERLY from "./assets/images/Gatherly1.png";
 import VUESKY from "./assets/images/VUESKY.png";
 import THEMENTALHUB from "./assets/images/THEMENTALHUB.png";
 import { useSnapScroll } from "./composables/useSnapScroll";
