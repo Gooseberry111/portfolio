@@ -56,7 +56,7 @@ usePageEnter(root, () => props.active);
       </div>
     </div>
 
-    <div class="my-15 h-px w-2/3 bg-white/10 md:my-0 md:h-2/3 md:w-px"></div>
+    <div class="my-1 h-px w-2/3 bg-white/10 md:my-0 md:h-2/3 md:w-px"></div>
 
     <div
       class="flex w-full flex-1 items-center justify-center px-3 md:h-full md:px-8"

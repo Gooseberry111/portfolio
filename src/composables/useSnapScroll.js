@@ -7,6 +7,9 @@ export function useSnapScroll(pageCount) {
   let isLocked = false;
   let unlockTimeout = null;
 
+  let touchStartX = 0;
+  let touchStartY = 0;
+
   function lock(duration) {
     isLocked = true;
     clearTimeout(unlockTimeout);
@@ -21,7 +24,7 @@ export function useSnapScroll(pageCount) {
     if (clamped === activeIndex.value) return;
 
     activeIndex.value = clamped;
-    lock(1300); // 1000ms tween + 300ms buffer to swallow trailing wheel events
+    lock(1300);
 
     gsap.to(container.value, {
       x: `-${clamped * 100}vw`,
@@ -50,14 +53,43 @@ export function useSnapScroll(pageCount) {
       goToIndex(activeIndex.value - 1);
   }
 
+  function handleTouchStart(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }
+
+  function handleTouchEnd(e) {
+    if (isLocked) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaX = touchStartX - touchEndX;
+    const deltaY = touchStartY - touchEndY;
+
+    // ignore swipes that are more vertical than horizontal —
+    // those are probably accidental, not an intentional page-swipe
+    if (Math.abs(deltaX) < Math.abs(deltaY)) return;
+    if (Math.abs(deltaX) < 50) return; // too small to count as a real swipe
+
+    if (deltaX > 0) {
+      goToIndex(activeIndex.value + 1);
+    } else {
+      goToIndex(activeIndex.value - 1);
+    }
+  }
+
   onMounted(() => {
     window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("keydown", handleKeydown);
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
   });
 
   onUnmounted(() => {
     window.removeEventListener("wheel", handleWheel);
     window.removeEventListener("keydown", handleKeydown);
+    window.removeEventListener("touchstart", handleTouchStart);
+    window.removeEventListener("touchend", handleTouchEnd);
     clearTimeout(unlockTimeout);
   });
 
