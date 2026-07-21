@@ -66,7 +66,7 @@ usePageEnter(root, () => props.active);
           About Me
         </h2>
         <p class="text-sm leading-relaxed text-white/60 md:hidden">
-          {{ bio }}
+          {{ shortBio }}
         </p>
         <p class="hidden text-base leading-relaxed text-white/60 md:block">
           {{ bio }}
