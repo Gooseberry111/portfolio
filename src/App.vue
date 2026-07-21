@@ -111,6 +111,7 @@ const { container, activeIndex, goToIndex } = useSnapScroll(pageCount);
         tagline="Frontend developer crafting clean, elegant web experiences."
         :skills="['Vue 3', 'Supabase', 'Tailwind', 'JavaScript']"
         :photo="image"
+        shortBio="Full-stack developer working across Vue, Supabase, and PostgreSQL. Outside of code: basketball, singing, and poetry."
         bio="I'm a full-stack developer with a degree that gave me the fundamentals, and a lot of late nights that gave me everything else. I work across the whole stack. Vue on the frontend, Supabase and PostgreSQL underneath because I like understanding a project from the database schema all the way up to the pixels someone actually clicks. There's something satisfying about tracing a bug from a broken UI state all the way down to a missing RLS policy, then fixing both ends. Outside of code, I play basketball, sing, and write poetry. Yeah I know, different outlets, but same instinct. It is literally taking something unstructured and shaping it into something that holds together. Turns out that's basically what building software is too "
         :active="activeIndex === 0"
       />

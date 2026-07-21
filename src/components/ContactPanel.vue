@@ -62,13 +62,13 @@ async function handleSubmit() {
 <template>
   <section
     ref="root"
-    class="flex h-screen w-screen shrink-0 flex-col items-center justify-center gap-8 px-8 lg:flex-row lg:gap-30"
+    class="flex h-screen w-screen shrink-0 flex-col items-center justify-center gap-6 overflow-y-auto px-4 py-12 sm:px-8 lg:flex-row lg:gap-16 lg:overflow-visible lg:py-0"
   >
     <!-- Left: info card -->
     <div
-      class="stagger-item flex w-full max-w-sm flex-col items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-10 text-center backdrop-blur-md"
+      class="stagger-item flex w-full max-w-sm flex-col items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-md sm:p-8 lg:p-10"
     >
-      <h2 class="text-2xl font-medium text-white">Let's talk</h2>
+      <h2 class="text-xl font-medium text-white sm:text-2xl">Let's talk</h2>
       <a
         :href="`mailto:${email}`"
         class="text-sm text-white/60 transition-colors hover:text-amber-200"
@@ -89,12 +89,15 @@ async function handleSubmit() {
       </div>
     </div>
 
-    <div class="h-2/3 w-px bg-white/10"></div>
+    <!-- Divider: horizontal on mobile, vertical on desktop -->
+    <div
+      class="h-px w-2/3 max-w-xs bg-white/10 lg:h-2/3 lg:w-px lg:max-w-none"
+    ></div>
 
     <!-- Right: contact form -->
     <form
       @submit.prevent="handleSubmit"
-      class="stagger-item flex w- max-w-sm flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-10 backdrop-blur-md"
+      class="stagger-item flex w-full max-w-sm flex-col gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md sm:p-8 lg:p-10"
     >
       <div class="flex flex-col gap-1.5">
         <label for="name" class="text-xs text-white/50">Name</label>

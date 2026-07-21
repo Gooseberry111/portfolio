@@ -16,12 +16,12 @@ usePageEnter(root, () => props.active);
 <template>
   <section
     ref="root"
-    class="flex h-screen w-screen shrink-0 flex-col justify-center gap-10 px-8"
+    class="flex h-screen w-screen shrink-0 flex-col justify-center gap-6 overflow-y-auto px-4 py-10 md:gap-10 md:overflow-visible md:px-8 md:py-0"
   >
-    <div class="flex flex-col gap-2">
-      <h2 class="text-2xl font-medium text-white">My Projects</h2>
+    <div class="flex flex-col gap-2 text-center md:text-left">
+      <h2 class="text-xl font-medium text-white md:text-2xl">My Projects</h2>
     </div>
-    <div class="flex flex-wrap justify-center gap-6">
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">
       <ProjectCard
         v-for="project in projects"
         :key="project.id"
