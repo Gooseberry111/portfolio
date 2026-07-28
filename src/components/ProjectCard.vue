@@ -12,6 +12,7 @@ const emit = defineEmits(["open"]);
 <template>
   <article
     class="group flex h-33 w-30 shrink-0 cursor-pointer flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-2.5 backdrop-blur-md transition-all duration-300 hover:border-amber-300/50 hover:bg-white/10 md:h-71 md:w-56 md:gap-3 md:rounded-2xl md:p-4"
+    @click="emit('open')"
   >
     <div
       class="flex h-13 w-full items-center justify-center rounded-lg bg-white/5 md:h-28 md:rounded-xl"

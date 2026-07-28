@@ -1,13 +1,17 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { RouterLink } from "vue-router";
 import ProjectCard from "./ProjectCard.vue";
 import { usePageEnter } from "../composables/usePageEnter";
+
 const props = defineProps({
   projects: { type: Array, required: true },
   active: { type: Boolean, required: true },
 });
 
 const emit = defineEmits(["open"]);
+
+const featuredProjects = computed(() => props.projects.slice(0, 4));
 
 const root = ref(null);
 usePageEnter(root, () => props.active);
@@ -23,7 +27,7 @@ usePageEnter(root, () => props.active);
     </div>
     <div class="flex flex-wrap justify-center gap-4 md:gap-6">
       <ProjectCard
-        v-for="project in projects"
+        v-for="project in featuredProjects"
         :key="project.id"
         :title="project.title"
         :description="project.description"
@@ -33,5 +37,12 @@ usePageEnter(root, () => props.active);
         class="stagger-item"
       />
     </div>
+
+    <RouterLink
+      to="/projects"
+      class="stagger-item self-center rounded-full border border-amber-300/40 px-5 py-2 text-sm text-amber-200 transition hover:bg-amber-300/10 md:self-start"
+    >
+      View more projects →
+    </RouterLink>
   </section>
 </template>
