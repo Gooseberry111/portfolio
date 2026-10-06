@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+/* matches the starry background so overscroll / rubber-banding never flashes white.
+   set on html only: a body background would paint over the z-index:-1 stars */
+html {
+  background-color: #08090c;
+}
+
+/* hide scrollbars site-wide; areas still scroll with wheel, touch and keyboard */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}

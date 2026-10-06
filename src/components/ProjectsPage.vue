@@ -18,31 +18,46 @@ usePageEnter(root, () => props.active);
 </script>
 
 <template>
-  <section
-    ref="root"
-    class="flex h-screen w-screen shrink-0 flex-col justify-center gap-6 overflow-y-auto px-4 py-10 md:gap-10 md:overflow-visible md:px-8 md:py-0"
-  >
-    <div class="flex flex-col gap-2 text-center md:text-left">
-      <h2 class="text-xl font-medium text-white md:text-2xl">My Projects</h2>
-    </div>
-    <div class="flex flex-wrap justify-center gap-4 md:gap-6">
-      <ProjectCard
-        v-for="project in featuredProjects"
-        :key="project.id"
-        :title="project.title"
-        :description="project.description"
-        :tags="project.tags"
-        :image="project.image"
-        @open="emit('open', project)"
-        class="stagger-item"
-      />
-    </div>
-
-    <RouterLink
-      to="/projects"
-      class="stagger-item self-center rounded-full border border-amber-300/40 px-5 py-2 text-sm text-amber-200 transition hover:bg-amber-300/10 md:self-start"
+  <section ref="root" class="flex h-screen w-screen shrink-0 overflow-y-auto">
+    <div
+      class="m-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-14 md:gap-8 md:px-8"
     >
-      View more projects →
-    </RouterLink>
+      <div
+        class="stagger-item flex flex-col items-center gap-1 text-center md:flex-row md:items-end md:justify-between md:text-left"
+      >
+        <div>
+          <h2 class="text-xl font-medium text-white md:text-2xl">My Projects</h2>
+          <p class="mt-1 text-sm text-white/50">
+            A few things I've designed and built recently.
+          </p>
+        </div>
+        <RouterLink
+          to="/projects"
+          class="hidden shrink-0 rounded-full border border-amber-300/40 px-5 py-2 text-sm text-amber-200 transition hover:bg-amber-300/10 md:inline-block"
+        >
+          View all projects →
+        </RouterLink>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 md:gap-5 lg:grid-cols-4">
+        <ProjectCard
+          v-for="project in featuredProjects"
+          :key="project.id"
+          :title="project.title"
+          :description="project.description"
+          :tags="project.tags"
+          :image="project.image"
+          class="stagger-item"
+          @open="emit('open', project)"
+        />
+      </div>
+
+      <RouterLink
+        to="/projects"
+        class="stagger-item self-center rounded-full border border-amber-300/40 px-5 py-2 text-sm text-amber-200 transition hover:bg-amber-300/10 md:hidden"
+      >
+        View all projects →
+      </RouterLink>
+    </div>
   </section>
 </template>

@@ -1,7 +1,9 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
 
-export function useSnapScroll(pageCount) {
+// isPaused: optional getter, e.g. while a modal is open, so wheel/keys/swipes
+// stay with the overlay instead of moving the page behind it
+export function useSnapScroll(pageCount, isPaused = () => false) {
   const container = ref(null);
   const activeIndex = ref(0);
   let isLocked = false;
@@ -34,6 +36,7 @@ export function useSnapScroll(pageCount) {
   }
 
   function handleWheel(e) {
+    if (isPaused()) return;
     e.preventDefault();
     if (isLocked) return;
 
@@ -46,7 +49,7 @@ export function useSnapScroll(pageCount) {
   }
 
   function handleKeydown(e) {
-    if (isLocked) return;
+    if (isLocked || isPaused()) return;
     if (e.key === "ArrowRight" || e.key === "PageDown")
       goToIndex(activeIndex.value + 1);
     if (e.key === "ArrowLeft" || e.key === "PageUp")
@@ -59,7 +62,7 @@ export function useSnapScroll(pageCount) {
   }
 
   function handleTouchEnd(e) {
-    if (isLocked) return;
+    if (isLocked || isPaused()) return;
 
     const touchEndX = e.changedTouches[0].clientX;
     const touchEndY = e.changedTouches[0].clientY;

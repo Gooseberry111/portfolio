@@ -7,7 +7,7 @@ import ContactPanel from "../components/ContactPanel.vue";
 import ProjectModal from "../components/ProjectModal.vue";
 import ScrollDots from "../components/ScrollDots.vue";
 import { useSnapScroll } from "../composables/useSnapScroll";
-import image from "../assets/images/image.png";
+import image from "../assets/images/image.webp";
 import { projects } from "../data/projects";
 
 const beyondCodeFacts = ref([
@@ -23,7 +23,10 @@ function handleOpenProject(project) {
 }
 
 const pageCount = computed(() => 4); // Intro, Projects, BeyondCode, Contact
-const { container, activeIndex, goToIndex } = useSnapScroll(pageCount);
+const { container, activeIndex, goToIndex } = useSnapScroll(
+  pageCount,
+  () => activeProject.value !== null,
+);
 </script>
 
 <template>
