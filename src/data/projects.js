@@ -8,6 +8,9 @@ import BETWEEN_US from "../assets/images/BetweenUs.webp";
 import PSALMS from "../assets/images/Psalms.webp";
 import FIRSTDRAFT from "../assets/images/FirstDraft.webp";
 import BLISSMIND from "../assets/images/BlissMind.webp";
+import DL4ALL from "../assets/images/DL4ALLAttendance.webp";
+import Pip from "../assets/images/pip.webp";
+import DL4ALLFinance from "../assets/images/DL4ALLFinance.webp";
 
 export const projects = [
   {
@@ -119,6 +122,41 @@ export const projects = [
     tags: ["Vue", "Tailwind", "Calendly", "Netlify"],
     image: BLISSMIND,
     link: "https://blissmind.netlify.app/",
+  },
+
+  {
+    id: 11,
+    title: "DL4ALL Attendance",
+    description:
+      "A GPS-verified attendance app for my NYSC CDS group, where members check in from their phones at meetings.",
+    longDescription:
+      "DL4ALL Attendance is an app I built for the Digital Literacy for All CDS group in Kaduna South. We were taking attendance on paper, so I made a phone-friendly app you can install. Members check in during the meeting's attendance window, and the server only records them if they're within the venue's GPS radius. Admins can manage members, meetings and venues, extend or reopen deadlines, and export reports. Every admin change goes into an audit log. Most of the work was on the backend. Every write goes through checked Postgres functions with Row-Level Security, and I wrote database tests that run the real migrations to make sure nobody can get around the rules.",
+    tags: ["Vue", "Tailwind", "Supabase", "PostgreSQL", "PWA"],
+    image: DL4ALL,
+    link: "",
+  },
+
+  {
+    id: 12,
+    title: "Pip",
+    description:
+      "A cosy virtual plant companion where you look after a little plant called Pip, grow a 3D farm and play over 20 games.",
+    longDescription:
+      "Pip is a virtual plant companion I built to give people a calm little reason to check in each day. You plant a seed, give it a name and water it at morning, afternoon and night drink times. It grows through six stages into a flowering plant. Pip never dies and there are no streaks or guilt, just a daily gift, small weekly goals, a mood check and a journal that fills itself. There is a 3D farm built with three.js, with crops, fruit trees, animals, a kitchen with 20 recipes, orders from critter neighbours, seasons and the real local weather. Friends can visit your farm by code, water your crops and send you gifts. There are also over 20 games, from match 3 and sudoku to checkers, mini golf and a rhythm game, each with endless levels. Every puzzle board is checked by a solver so it can always be cleared, and level targets were tuned by bots. All the sound and music is synthesised live with the Web Audio API, so the app ships no audio files. You can chat with Pip using its own offline replies or an optional AI, and if a message suggests someone may be in danger, the app shows real helplines. It works offline as a web app and on phones through Capacitor. Backups, farm visits and reminders run on Netlify Functions and Blobs.",
+    tags: ["Vue", "Pinia", "Tailwind", "Three.js", "Capacitor", "Netlify"],
+    image: Pip,
+    link: "https://littlepip.netlify.app",
+  },
+  {
+    id: 13,
+    title: "DL4ALL Finance",
+    description:
+      "A finance app for my NYSC CDS group, where the financial secretaries track dues, fines, expenses and the group's balance.",
+    longDescription:
+      "DL4ALL Finance is an app I built for the financial secretaries of the Digital Literacy for All CDS group in Kaduna South. We were keeping dues and expenses in a notebook, so I made one shared record the secretaries all use. Paying works like ticking a register: pick the month and tap each member who has paid monthly dues, a CDS card, a fine or a contribution, and mark it as cash or transfer. The app tracks the bank account and the cash box separately. It records expenses with receipts and money given out on request. It also shows who still owes, lets you copy the unpaid list straight into WhatsApp, and exports reports. Members can be imported from a CSV or Excel sheet, with likely duplicates flagged first. Most of the work was on the backend. Payments and their ledger entries are written together in one Postgres transaction. Mistakes get reversed instead of deleted, double submissions can't be counted twice, and every change goes into an audit log that nobody can edit. Row-Level Security enforces each role's permissions in the database. I also wrote database tests that run the real migrations to check that nobody can get around the money rules.",
+    tags: ["Vue", "Tailwind", "Supabase", "PostgreSQL"],
+    image: DL4ALLFinance,
+    link: "https://d4all-finance.vercel.app",
   },
   // add new projects here going forward — nothing else needs to change
 ];
